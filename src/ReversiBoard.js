@@ -4,7 +4,6 @@ import black from "./black.jpg";
 
 class ReversiBoard extends React.Component {
   onClick(id) {
-    console.log(id);
     if (this.isActive(id)) {
       this.props.moves.clickCell(id);
       this.props.events.endTurn();
@@ -13,7 +12,7 @@ class ReversiBoard extends React.Component {
 
   isActive(id) {
     if (!this.props.isActive) return false;
-    if (this.props.G.cells[id] !== null) return false;
+    if (this.props.G.cells[id] !== null) return true; //allow to re-click? by setting true
     return true;
   }
 
