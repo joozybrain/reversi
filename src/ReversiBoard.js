@@ -1,10 +1,10 @@
 import React from "react";
-import white from "./white.jpg"
-import black from "./black.jpg"
+import white from "./white.jpg";
+import black from "./black.jpg";
 
 class ReversiBoard extends React.Component {
   onClick(id) {
-    console.log(id)
+    console.log(id);
     if (this.isActive(id)) {
       this.props.moves.clickCell(id);
       this.props.events.endTurn();
@@ -39,7 +39,12 @@ class ReversiBoard extends React.Component {
         const id = 3 * i + j;
         cells.push(
           <td style={cellStyle} key={id} onClick={() => this.onClick(id)}>
-            {this.props.G.cells[id] === "0" ? <img src={white} alt="white" width="30px" height="30px"/> : <img src={black} alt="white" width="30px" height="30px"/>}
+            {this.props.G.cells[id] === "0" && (
+              <img src={white} alt="white" width="30px" height="30px" />
+            )}
+            {this.props.G.cells[id] === "1" && (
+              <img src={black} alt="black" width="30px" height="30px" />
+            )}
           </td>
         );
       }

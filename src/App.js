@@ -8,7 +8,7 @@ const Reversi = Game({
   moves: {
     clickCell(G, ctx, id) {
       let cells = [...G.cells]; // don't mutate original state.
-      cells[id] = ctx.currentPlayer === "0" ? "white ": "black";
+      cells[id] = ctx.currentPlayer;
       return { ...G, cells }; // don't mutate original state.
     }
   }
