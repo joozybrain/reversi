@@ -1,6 +1,7 @@
 import React from "react";
-import white from "./white.jpg";
-import black from "./black.jpg";
+import white from "./white.jpg"
+import black from "./black.jpg"
+
 
 class ReversiBoard extends React.Component {
   onClick(id) {
@@ -12,6 +13,7 @@ class ReversiBoard extends React.Component {
 
   isActive(id) {
     if (!this.props.isActive) return false;
+    //if (this.props.G.cells[id] !== null) return false;
     if (this.props.G.cells[id] !== null) return true; //allow to re-click? by setting true
     return true;
   }
@@ -19,7 +21,7 @@ class ReversiBoard extends React.Component {
   render() {
     let winner = "";
     if (this.props.ctx.gameover !== null) {
-      winner = <div>Winner: {this.props.ctx.gameover}</div>;
+     winner = <div id="winner" >Winner: {this.props.ctx.gameover}</div>;
     }
 
     const cellStyle = {
@@ -32,10 +34,11 @@ class ReversiBoard extends React.Component {
     };
 
     let tbody = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 8; i++) {
       let cells = [];
-      for (let j = 0; j < 3; j++) {
-        const id = 3 * i + j;
+      for (let j = 0; j < 8; j++) {
+        const id = 8 * i + j;
+
         cells.push(
           <td style={cellStyle} key={id} onClick={() => this.onClick(id)}>
             {this.props.G.cells[id] === "0" && (
