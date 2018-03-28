@@ -1,6 +1,6 @@
 import { Client } from "boardgame.io/react";
 import { Game } from "boardgame.io/core";
-import ReversiBoard from "./components/ReversiBoard/ReversiBoard"
+import ReversiBoard from "./components/ReversiBoard/ReversiBoard";
 
 const Reversi = Game({
   //setup: () =>  ({ cells: Array(64).fill(null) }), //The brackets before the curly braces is inform it is object and not code block
@@ -11,13 +11,19 @@ const Reversi = Game({
     tempArray[36] = "0";
     tempArray[28] = "1";
     tempArray[35] = "1";
-    return {cells: tempArray}
+    return { cells: tempArray };
   },
 
   moves: {
     clickCell(G, ctx, id) {
       let cells = [...G.cells]; // don't mutate original state.
       cells[id] = ctx.currentPlayer;
+      return { ...G, cells }; // don't mutate original state.
+    },
+
+    clickShift(G, ctx, id) {
+      let cells = [...G.cells]; // don't mutate original state.
+      cells[id] = null;
       return { ...G, cells }; // don't mutate original state.
     }
   }

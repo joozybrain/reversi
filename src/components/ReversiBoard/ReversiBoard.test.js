@@ -16,16 +16,19 @@ describe("ReversiBoard", () => {
     expect(wrapper.find("img").get(0).props.alt).toEqual("white");
     expect(wrapper.find("img").get(1).props.alt).toEqual("black");
   });
+
   //Test for events
-  it("able to simulate a click activating a title", () => {
+  it("able to delete a title", () => {
     const mockClickCell = jest.fn();
     const mockEndTurn = jest.fn();
+    const mockClickShift = jest.fn();
+    let e = { shiftKey: true };
     const wrapper = shallow(
       <ReversiBoard
         ctx={{}}
         G={{ cells: [] }}
         isActive
-        moves={{ clickCell: mockClickCell }}
+        moves={{ clickCell: mockClickCell, clickShift: mockClickShift }}
         events={{ endTurn: mockEndTurn }}
       />
     );
@@ -33,7 +36,36 @@ describe("ReversiBoard", () => {
     wrapper
       .find("td")
       .at(0)
-      .simulate("click");
+      .simulate("click", e);
+    expect(mockClickShift).toBeCalled();
+
+    e = { shiftKey: false}
+    wrapper
+      .find("td")
+      .at(0)
+      .simulate("click", e);
+    expect(mockClickShift).toBeCalled();
+  });
+
+  it("able to simulate a click activating a title", () => {
+    const mockClickCell = jest.fn();
+    const mockEndTurn = jest.fn();
+    const mockClickShift = jest.fn();
+    const e = { shiftKey: true };
+    const wrapper = shallow(
+      <ReversiBoard
+        ctx={{}}
+        G={{ cells: [] }}
+        isActive
+        moves={{ clickCell: mockClickCell, clickShift: mockClickShift }}
+        events={{ endTurn: mockEndTurn }}
+      />
+    );
+
+    wrapper
+      .find("td")
+      .at(0)
+      .simulate("click", e);
 
     expect(mockClickCell).toBeCalledWith(0);
     expect(mockEndTurn).toBeCalled();
@@ -43,12 +75,14 @@ describe("ReversiBoard", () => {
   it("able to simulate clicking but does not activate a tile", () => {
     const mockClickCell = jest.fn();
     const mockEndTurn = jest.fn();
+    const mockClickShift = jest.fn();
+    const e = { shiftKey: true };
     const wrapper = shallow(
       <ReversiBoard
         ctx={{}}
         G={{ cells: [] }}
         isActive={false}
-        moves={{ clickCell: mockClickCell }}
+        moves={{ clickCell: mockClickCell, clickShift: mockClickShift }}
         events={{ endTurn: mockEndTurn }}
       />
     );
@@ -56,7 +90,7 @@ describe("ReversiBoard", () => {
     wrapper
       .find("td")
       .at(0)
-      .simulate("click");
+      .simulate("click", e);
 
     expect(mockClickCell).not.toBeCalled();
   });
