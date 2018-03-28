@@ -40,7 +40,7 @@ describe("ReversiBoard", () => {
   });
 
   //Test for event handler
-  it("able to simulate clicking does not activate a tile", () => {
+  it("able to simulate clicking but does not activate a tile", () => {
     const mockClickCell = jest.fn();
     const mockEndTurn = jest.fn();
     const wrapper = shallow(
@@ -53,9 +53,21 @@ describe("ReversiBoard", () => {
       />
     );
 
-    wrapper.find("td").at(0).simulate("click")
-    
-    expect(mockClickCell).not.toBeCalled();
+    wrapper
+      .find("td")
+      .at(0)
+      .simulate("click");
 
+    expect(mockClickCell).not.toBeCalled();
+  });
+
+  it("should render winner correctly", () => {
+    let wrapper = shallow(<ReversiBoard ctx={{}} G={{ cells: [] }} />);
+    expect(wrapper.find("#winner")).toHaveLength(1);
+
+    wrapper = shallow(
+      <ReversiBoard ctx={{ gameover: null }} G={{ cells: [] }} />
+    );
+    expect(wrapper.find("#winner")).toHaveLength(0);
   });
 });

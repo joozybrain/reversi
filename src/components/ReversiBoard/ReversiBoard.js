@@ -14,8 +14,7 @@ class ReversiBoard extends React.Component {
 
   isActive(id) {
     if (!this.props.isActive) return false;
-    //if (this.props.G.cells[id] !== null) return false;
-    if (this.props.G.cells[id] !== null) return true; //allow to re-click? by setting true
+    //if (this.props.G.cells[id] !== null) return false; //uncomment if to disable clicking twice to change color
     return true;
   }
 
