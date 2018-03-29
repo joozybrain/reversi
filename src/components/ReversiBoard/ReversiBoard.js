@@ -6,7 +6,6 @@ class ReversiBoard extends React.Component {
   onClick(id, e) {
     if (this.isActive(id)) {
       this.props.moves.clickCell(id);
-      this.props.events.endTurn();
     }
     //console.log(e)
     if (e.shiftKey) {
@@ -14,6 +13,10 @@ class ReversiBoard extends React.Component {
         this.props.moves.clickShift(id);
       }
     }
+  }
+
+  clickEndTurn(e) {
+    this.props.events.endTurn();
   }
 
   isActive(id) {
@@ -68,6 +71,9 @@ class ReversiBoard extends React.Component {
           <tbody>{tbody}</tbody>
         </table>
         {winner}
+        <div>
+          <input type="submit" value="End Turn" onClick={event => this.clickEndTurn(event)} />
+        </div>
       </div>
     );
   }

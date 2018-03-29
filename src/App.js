@@ -54,9 +54,11 @@ const Reversi = Game({
 
   flow: {
     endGameIf: (G, ctx) => {
-      let isVictoryObj = isVictory(G.cells)
-      if (isVictoryObj.flag) {
-        return  isVictoryObj.winner;
+      console.log(ctx);
+      console.log(G);
+      let isVictoryObj = isVictory(G.cells);
+      if (isVictoryObj.flag && ctx.currentPlayer === "0" && ctx.turn === 12) {
+        return isVictoryObj.winner;
       }
     }
   }
