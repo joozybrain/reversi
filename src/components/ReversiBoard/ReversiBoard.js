@@ -38,10 +38,11 @@ class ReversiBoard extends React.Component {
     };
 
     let tbody = [];
-    for (let i = 0; i < 8; i++) {
+    const gridSize = 4;
+    for (let i = 0; i < gridSize; i++) {
       let cells = [];
-      for (let j = 0; j < 8; j++) {
-        const id = 8 * i + j;
+      for (let j = 0; j < gridSize; j++) {
+        const id = gridSize * i + j;
 
         cells.push(
           <td
