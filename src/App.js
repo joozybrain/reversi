@@ -66,7 +66,8 @@ const Reversi = Game({
 
 const App = Client({
   game: Reversi,
-  board: ReversiBoard
+  board: ReversiBoard,
+  debug: false,
 });
 
 export default App;

@@ -68,7 +68,7 @@ describe("ReversiBoard", () => {
       .simulate("click", e);
 
     expect(mockClickCell).toBeCalledWith(0);
-    expect(mockEndTurn).toBeCalled();
+    
   });
 
   //Test for event handler

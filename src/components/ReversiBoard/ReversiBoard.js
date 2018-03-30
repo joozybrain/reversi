@@ -1,6 +1,10 @@
 import React from "react";
 import white from "./white.jpg";
 import black from "./black.jpg";
+import whiteSpy from "./white_spy.PNG";
+import blackSpy from "./black_spy.png";
+
+import "./ReversiBoard.css";
 
 class ReversiBoard extends React.Component {
   onClick(id, e) {
@@ -66,13 +70,23 @@ class ReversiBoard extends React.Component {
     }
 
     return (
-      <div>
-        <table id="board">
-          <tbody>{tbody}</tbody>
-        </table>
-        {winner}
+      <div className="grid-table">
         <div>
-          <input type="submit" value="End Turn" onClick={event => this.clickEndTurn(event)} />
+          player 1<img src={blackSpy} alt="blackSpy" />
+        </div>
+        <div>
+          <table id="board">
+            <tbody>{tbody}</tbody>
+          </table>
+          {winner}
+          <input
+            type="submit"
+            value="End Turn"
+            onClick={event => this.clickEndTurn(event)}
+          />
+        </div>
+        <div>
+          player 2<img src={whiteSpy} alt="whiteSpy" />
         </div>
       </div>
     );

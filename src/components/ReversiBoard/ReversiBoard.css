@@ -1,3 +1,21 @@
-td {
+.grid-table {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
 
+.grid-table > div {
+    
+    background: white
+    
+    
+}
+
+div {
+   border: solid;
+   margin: 0
+}
+
+table {
+    max-width: 600px;
+    margin: 0 auto
 }
