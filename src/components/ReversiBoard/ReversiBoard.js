@@ -10,6 +10,7 @@ class ReversiBoard extends React.Component {
   onClick(id, e) {
     if (this.isActive(id)) {
       this.props.moves.clickCell(id);
+      this.props.events.endTurn();
     }
     //console.log(e)
     if (e.shiftKey) {
@@ -35,15 +36,6 @@ class ReversiBoard extends React.Component {
       winner = <div id="winner">Winner: {this.props.ctx.gameover}</div>;
     }
 
-    const cellStyle = {
-      border: "1px solid #555",
-      width: "50px",
-      height: "50px",
-      lineHeight: "50px",
-      textAlign: "center",
-      background: "green"
-    };
-
     let tbody = [];
     const gridSize = 4;
     for (let i = 0; i < gridSize; i++) {
@@ -53,7 +45,7 @@ class ReversiBoard extends React.Component {
 
         cells.push(
           <td
-            style={cellStyle}
+            className="cell-style"
             key={id}
             onClick={event => this.onClick(id, event)}
           >
