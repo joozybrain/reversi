@@ -42,7 +42,8 @@ const Reversi = Game({
     clickCell(G, ctx, id) {
       //const edgeCells = [0,1,2,3,4,7,8,11,12,13,14,15]
       let cells = [...G.cells]; // don't mutate original state.
-      cells[id] = ctx.currentPlayer;
+      //cells[id] = ctx.currentPlayer;
+      if (cells[id] === null) cells[id] = ctx.currentPlayer;
       //Flip tiless diagonally down left
       if (
         cells[id + 5] !== ctx.currentPlayer &&
@@ -170,7 +171,8 @@ const Reversi = Game({
       console.log(ctx);
       console.log(G);
       let isVictoryObj = isVictory(G.cells);
-      if (isVictoryObj.flag && ctx.currentPlayer === "0" && ctx.turn === 12) {
+      if (isVictoryObj.flag) {
+      //if (isVictoryObj.flag && ctx.currentPlayer === "0" && ctx.turn === 12) {
         return isVictoryObj.winner;
       }
     }

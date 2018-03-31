@@ -6,21 +6,25 @@
 .grid-table > div {
     
     background: white
-    
-    
+   
 }
 
 .cell-style {
     border: 1px solid #555;
-    width: 50px;
-    height: 50px;
-    
+    width: 70px;
+    height: 70px;
     background: white
   }
 
+ .button {
+    width: 30px;
+    height: 30px;
+  }
+  
 img {
     display: block;
-    margin: 0 auto
+    margin: 0 auto;
+    
 }
 
 div {

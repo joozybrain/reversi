@@ -50,10 +50,10 @@ class ReversiBoard extends React.Component {
             onClick={event => this.onClick(id, event)}
           >
             {this.props.G.cells[id] === "0" && (
-              <img src={white} alt="white" width="30px" height="30px" />
+              <img className="button" src={white} alt="white" />
             )}
             {this.props.G.cells[id] === "1" && (
-              <img src={black} alt="black" width="30px" height="30px" />
+              <img className="button" src={black} alt="black" />
             )}
           </td>
         );
