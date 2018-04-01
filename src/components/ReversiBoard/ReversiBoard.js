@@ -1,8 +1,8 @@
 import React from "react";
 import white from "./white.jpg";
 import black from "./black.jpg";
-import whiteSpy from "./white_spy.PNG";
-import blackSpy from "./black_spy.png";
+import whiteSpy from "./whitespy_small.png";
+import blackSpy from "./blackspy_smallv2.jpg";
 
 import "./ReversiBoard.css";
 
@@ -64,8 +64,17 @@ class ReversiBoard extends React.Component {
     return (
       <div className="grid-table">
         <div>
-          player 1<img src={blackSpy} alt="blackSpy" />
+          <img src={whiteSpy} alt="whiteSpy" className="spy-img" />
         </div>
+        <div>1</div>
+        <div>
+          <img src={blackSpy} alt="blackSpy" className="spy-img" />
+        </div>
+        <div
+          className={
+            this.props.ctx.currentPlayer === "0" ? "turn-line" : undefined
+          }
+        />
         <div>
           <table id="board">
             <tbody>{tbody}</tbody>
@@ -77,9 +86,11 @@ class ReversiBoard extends React.Component {
             onClick={event => this.clickEndTurn(event)}
           />
         </div>
-        <div>
-          player 2<img src={whiteSpy} alt="whiteSpy" />
-        </div>
+        <div
+          className={
+            this.props.ctx.currentPlayer === "1" ? "turn-line" : undefined
+          }
+        />
       </div>
     );
   }

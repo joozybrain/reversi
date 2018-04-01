@@ -1,13 +1,9 @@
 .grid-table {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 3fr
 }
 
-.grid-table > div {
-    
-    background: white
-   
-}
 
 .cell-style {
     border: 1px solid #555;
@@ -27,9 +23,44 @@ img {
     
 }
 
+.turn-line {
+    background: rgba(255, 0, 34, 0.856);
+    width: 200px;
+    height: 10px;
+}
+
+.profile-animation {
+    width:100px;
+    height:10px;
+    background:#fa4b2a;
+    animation-name:line-animation;
+    animation-duration:5s;
+    animation-iteration-count:infinite;
+    
+    border-radius:20px;
+}
+
+@keyframes line-animation {
+    0% {
+        opacity: 1;
+      }
+      50% { 
+        opacity: 0;
+      }
+      100%  {
+        opacity: 1;
+      }
+  }
+
+.spy-img {
+    border-radius: 50%;
+    width: 150px;
+    height: 160px;
+}
+
 div {
-   border: solid;
-   margin: 0
+   border: solid white;
+   margin: 0 auto
 }
 
 table {
