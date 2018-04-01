@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- '9'
+cache:
+  directories:
+  - node_modules
+script:
+- yarn test
+- yarn build
+deploy:
+  provider: heroku
+  app: project-reversi
+  on:
+    repo: joozybrain/reversi
+  api_key:
+    secure: mGssfI80iZY++SzIe2uZ8zWq52vza1xqI9oADqfPjgPcfbqJZ2rTq7XF80WrvhKI+dOuGwDxXjBXjV1ZZolEIZgmDBMA6GEFapztUy0uep4oOwMoiscBBNX/L2xumfeNAS+BzlzKW02PwqTDk4zzMz5yyGRmH9SuiBSC5jPUBkq+Bd9C/eTMdR3cCf2FPEKLVGpZIWs8/fxuaTrtV1aCJ7cmhGIUaxcIXqcPBnozNGS8aWhv7hEsy0rqd67AH9TzSJGZEnTGLUhAdzVRIIrHTBaU4hgOcJqY0xfBm+lXBPaz2Dw/fH6rg//aQB4sDnBVayvREsECJwyiUbub972vOU/94serg2Gdwug6mLeXA4IldY70+/+d83Gr1gmdGKsbrLdzcMdiw7agTa6/V9SnHF6S5b+Udu6+wS3W+g846Tp8UPe1GwYnjd9Sp2oXBJE/OVRH+3/RXkS1h/ZD7+N8B17e3Y+uYFFfCwbWMjskN13/I0vl75UgA6fODBmbwGuGIGqbIb5nygF50Zbp/mSJxY/YiRY8kF2JRC2FG5vXIl5oPSBZzBOnCXpmSAWeJ28nnDY9kTbAtG7BsHKpA6/vrlsCO9gVL3uqhZufqp4yZgOHxyl0tc8tN3hTvpkbdDkZfxAPqyuiktO+z4Qe2EazZB4Z8oRawNm6cO7aXJdJdvc=
