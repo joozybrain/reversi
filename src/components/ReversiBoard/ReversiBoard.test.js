@@ -12,9 +12,9 @@ describe("ReversiBoard", () => {
     );
 
     expect(wrapper.find("table")).toHaveLength(1);
-    expect(wrapper.find("img")).toHaveLength(2);
-    expect(wrapper.find("img").get(0).props.alt).toEqual("white");
-    expect(wrapper.find("img").get(1).props.alt).toEqual("black");
+    expect(wrapper.find("img")).toHaveLength(4);
+    expect(wrapper.find("img").get(0).props.alt).toEqual("whiteSpy");
+    expect(wrapper.find("img").get(1).props.alt).toEqual("white");
   });
 
   //Test for events
@@ -95,13 +95,5 @@ describe("ReversiBoard", () => {
     expect(mockClickCell).not.toBeCalled();
   });
 
-  it("should render winner correctly", () => {
-    let wrapper = shallow(<ReversiBoard ctx={{}} G={{ cells: [] }} />);
-    expect(wrapper.find("#winner")).toHaveLength(1);
-
-    wrapper = shallow(
-      <ReversiBoard ctx={{ gameover: null }} G={{ cells: [] }} />
-    );
-    expect(wrapper.find("#winner")).toHaveLength(0);
-  });
+  
 });

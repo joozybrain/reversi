@@ -1,9 +1,14 @@
 .grid-table {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 1fr 3fr
+    grid-template-columns: 2fr 2fr 3fr 2fr 2fr;
+    grid-template-rows: auto;
+    
 }
 
+.grid-draw {
+    display: grid;
+    grid-template-columns: 1fr
+}
 
 .cell-style {
     border: 1px solid #555;
@@ -24,36 +29,63 @@ img {
 }
 
 .turn-line {
-    background: rgba(255, 0, 34, 0.856);
+    background: rgb(255, 0, 34);
     width: 200px;
     height: 10px;
 }
 
-.profile-animation {
-    width:100px;
-    height:10px;
-    background:#fa4b2a;
-    animation-name:line-animation;
-    animation-duration:5s;
-    animation-iteration-count:infinite;
-    
-    border-radius:20px;
+.speech-bubble {
+    position: relative;
+    border: 2px solid black;
+	background: white;
+    border-radius: 30%;
+    text-align: center;
+    margin: 0 auto;
+    height: 90px;
+    width: 130px;
+    font-size: 24pt;
+    vertical-align: middle;
+}
+.left:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color:black;
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -10px;
+	margin-left: -20px;
 }
 
-@keyframes line-animation {
-    0% {
-        opacity: 1;
-      }
-      50% { 
-        opacity: 0;
-      }
-      100%  {
-        opacity: 1;
-      }
-  }
+.right:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-left-color: black;
+	border-right: 0;
+	border-bottom: 0;
+	margin-top: -10px;
+	margin-right: -20px;
+}
+
+.draw-img {
+    display: block;
+    width: 300px;
+    height: 270px;   
+}
+
+
 
 .spy-img {
-    border-radius: 50%;
+    
     width: 150px;
     height: 160px;
 }

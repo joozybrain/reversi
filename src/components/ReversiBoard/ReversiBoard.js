@@ -3,6 +3,7 @@ import white from "./white.jpg";
 import black from "./black.jpg";
 import whiteSpy from "./whitespy_small.png";
 import blackSpy from "./blackspy_smallv2.jpg";
+import drawImage from "./draw.png";
 
 import "./ReversiBoard.css";
 
@@ -31,10 +32,10 @@ class ReversiBoard extends React.Component {
   }
 
   render() {
-    let winner = "";
-    if (this.props.ctx.gameover !== null) {
-      winner = <div id="winner">Winner: {this.props.ctx.gameover}</div>;
-    }
+    // let winner = "";
+    // if (this.props.ctx.gameover !== null) {
+    //   winner = <div id="winner">Winner: {this.props.ctx.gameover}</div>;
+    // }
 
     let tbody = [];
     const gridSize = 4;
@@ -64,33 +65,61 @@ class ReversiBoard extends React.Component {
     return (
       <div className="grid-table">
         <div>
-          <img src={whiteSpy} alt="whiteSpy" className="spy-img" />
+          <div>
+            <img src={whiteSpy} alt="whiteSpy" className="spy-img" />
+          </div>
+          <div
+            className={
+              this.props.ctx.currentPlayer === "0" ? "turn-line" : undefined
+            }
+          />
         </div>
-        <div>1</div>
         <div>
-          <img src={blackSpy} alt="blackSpy" className="spy-img" />
+          {this.props.ctx.gameover === "white" && (
+            <p className="speech-bubble left">
+              HeHeHe!
+            </p>
+          )}
+          {this.props.ctx.gameover === "draw" && (
+            <p className="speech-bubble left">
+              ! ! ? !
+            </p>
+          )}
         </div>
-        <div
-          className={
-            this.props.ctx.currentPlayer === "0" ? "turn-line" : undefined
-          }
-        />
         <div>
           <table id="board">
             <tbody>{tbody}</tbody>
           </table>
-          {winner}
-          <input
-            type="submit"
-            value="End Turn"
-            onClick={event => this.clickEndTurn(event)}
+        </div>
+        <div>
+          {this.props.ctx.gameover === "black" && (
+            <p className="speech-bubble right">
+              Hahaha!
+            </p>
+          )}
+          {this.props.ctx.gameover === "draw" && (
+            <p className="speech-bubble right">
+              ! ! ? !
+            </p>
+          )}
+        </div>
+        <div>
+          <div>
+            <img src={blackSpy} alt="blackSpy" className="spy-img" />
+          </div>
+          <div
+            className={
+              this.props.ctx.currentPlayer === "1" ? "turn-line" : undefined
+            }
           />
         </div>
-        <div
-          className={
-            this.props.ctx.currentPlayer === "1" ? "turn-line" : undefined
+        <div></div>
+        <div></div>
+        <div>
+          {this.props.ctx.gameover === "draw" && 
+            <img src={drawImage} alt="draw" className="draw-img" />
           }
-        />
+        </div>
       </div>
     );
   }

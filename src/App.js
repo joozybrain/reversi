@@ -40,15 +40,16 @@ const Reversi = Game({
 
   moves: {
     clickCell(G, ctx, id) {
-      //const edgeCells = [0,1,2,3,4,7,8,11,12,13,14,15]
+      const edgeCells = [0,1,2,3,4,7,8,11,12,13,14,15]
       let cells = [...G.cells]; // don't mutate original state.
       //cells[id] = ctx.currentPlayer;
       if (cells[id] === null) cells[id] = ctx.currentPlayer;
-      //Flip tiless diagonally down left
+
+      //Flip tiles diagonally down left
       if (
         cells[id + 5] !== ctx.currentPlayer &&
         cells[id + 5] !== null &&
-        [0, 1, 4, 5].includes(id)
+        !edgeCells.includes(id+5)
       ) {
         if (cells[id + 10] === ctx.currentPlayer) {
           cells[id + 5] = ctx.currentPlayer;
@@ -63,7 +64,7 @@ const Reversi = Game({
       if (
         cells[id - 5] !== ctx.currentPlayer &&
         cells[id - 5] !== null &&
-        [10, 11, 14, 15].includes(id)
+        !edgeCells.includes(id-5)
       ) {
         if (cells[id - 10] === ctx.currentPlayer) {
           cells[id - 5] = ctx.currentPlayer;
@@ -78,8 +79,9 @@ const Reversi = Game({
       if (
         cells[id + 3] !== ctx.currentPlayer &&
         cells[id + 3] !== null &&
-        [2, 3, 6, 7].includes(id)
+        !edgeCells.includes(id+3)
       ) {
+       
         if (cells[id + 6] === ctx.currentPlayer) {
           cells[id + 3] = ctx.currentPlayer;
         } else {
@@ -93,7 +95,7 @@ const Reversi = Game({
       if (
         cells[id - 3] !== ctx.currentPlayer &&
         cells[id - 3] !== null &&
-        [8, 9, 12, 13].includes(id)
+        !edgeCells.includes(id-3)
       ) {
         if (cells[id - 6] === ctx.currentPlayer) {
           cells[id - 3] = ctx.currentPlayer;
