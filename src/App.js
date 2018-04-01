@@ -26,10 +26,6 @@ const Reversi = Game({
 
   setup: () => {
     let tempArray = Array(16).fill(null);
-    // tempArray[27] = "0";
-    // tempArray[36] = "0";
-    // tempArray[28] = "1";
-    // tempArray[35] = "1";
 
     tempArray[5] = "0";
     tempArray[10] = "0";
@@ -40,16 +36,16 @@ const Reversi = Game({
 
   moves: {
     clickCell(G, ctx, id) {
-      const edgeCells = [0,1,2,3,4,7,8,11,12,13,14,15]
+      const edgeCells = [0, 1, 2, 3, 4, 7, 8, 11, 12, 13, 14, 15];
       let cells = [...G.cells]; // don't mutate original state.
-      //cells[id] = ctx.currentPlayer;
+
       if (cells[id] === null) cells[id] = ctx.currentPlayer;
 
       //Flip tiles diagonally down left
       if (
         cells[id + 5] !== ctx.currentPlayer &&
         cells[id + 5] !== null &&
-        !edgeCells.includes(id+5)
+        !edgeCells.includes(id + 5)
       ) {
         if (cells[id + 10] === ctx.currentPlayer) {
           cells[id + 5] = ctx.currentPlayer;
@@ -64,7 +60,7 @@ const Reversi = Game({
       if (
         cells[id - 5] !== ctx.currentPlayer &&
         cells[id - 5] !== null &&
-        !edgeCells.includes(id-5)
+        !edgeCells.includes(id - 5)
       ) {
         if (cells[id - 10] === ctx.currentPlayer) {
           cells[id - 5] = ctx.currentPlayer;
@@ -79,9 +75,8 @@ const Reversi = Game({
       if (
         cells[id + 3] !== ctx.currentPlayer &&
         cells[id + 3] !== null &&
-        !edgeCells.includes(id+3)
+        !edgeCells.includes(id + 3)
       ) {
-       
         if (cells[id + 6] === ctx.currentPlayer) {
           cells[id + 3] = ctx.currentPlayer;
         } else {
@@ -95,7 +90,7 @@ const Reversi = Game({
       if (
         cells[id - 3] !== ctx.currentPlayer &&
         cells[id - 3] !== null &&
-        !edgeCells.includes(id-3)
+        !edgeCells.includes(id - 3)
       ) {
         if (cells[id - 6] === ctx.currentPlayer) {
           cells[id - 3] = ctx.currentPlayer;
@@ -170,11 +165,8 @@ const Reversi = Game({
 
   flow: {
     endGameIf: (G, ctx) => {
-      console.log(ctx);
-      console.log(G);
       let isVictoryObj = isVictory(G.cells);
       if (isVictoryObj.flag) {
-      //if (isVictoryObj.flag && ctx.currentPlayer === "0" && ctx.turn === 12) {
         return isVictoryObj.winner;
       }
     }

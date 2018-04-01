@@ -13,7 +13,7 @@ class ReversiBoard extends React.Component {
       this.props.moves.clickCell(id);
       this.props.events.endTurn();
     }
-    //console.log(e)
+
     if (e.shiftKey) {
       if (this.isActive(id)) {
         this.props.moves.clickShift(id);
@@ -32,11 +32,6 @@ class ReversiBoard extends React.Component {
   }
 
   render() {
-    // let winner = "";
-    // if (this.props.ctx.gameover !== null) {
-    //   winner = <div id="winner">Winner: {this.props.ctx.gameover}</div>;
-    // }
-
     let tbody = [];
     const gridSize = 4;
     for (let i = 0; i < gridSize; i++) {
@@ -76,14 +71,10 @@ class ReversiBoard extends React.Component {
         </div>
         <div>
           {this.props.ctx.gameover === "white" && (
-            <p className="speech-bubble left">
-              HeHeHe!
-            </p>
+            <p className="speech-bubble left">HeHeHe!</p>
           )}
           {this.props.ctx.gameover === "draw" && (
-            <p className="speech-bubble left">
-              ! ! ? !
-            </p>
+            <p className="speech-bubble left">! ! ? !</p>
           )}
         </div>
         <div>
@@ -93,14 +84,10 @@ class ReversiBoard extends React.Component {
         </div>
         <div>
           {this.props.ctx.gameover === "black" && (
-            <p className="speech-bubble right">
-              Hahaha!
-            </p>
+            <p className="speech-bubble right">Hahaha!</p>
           )}
           {this.props.ctx.gameover === "draw" && (
-            <p className="speech-bubble right">
-              ! ! ? !
-            </p>
+            <p className="speech-bubble right">! ! ? !</p>
           )}
         </div>
         <div>
@@ -113,12 +100,12 @@ class ReversiBoard extends React.Component {
             }
           />
         </div>
-        <div></div>
-        <div></div>
+        <div />
+        <div />
         <div>
-          {this.props.ctx.gameover === "draw" && 
+          {this.props.ctx.gameover === "draw" && (
             <img src={drawImage} alt="draw" className="draw-img" />
-          }
+          )}
         </div>
       </div>
     );
